@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CircusTrein
@@ -18,15 +11,15 @@ namespace CircusTrein
         }
 
         private void result_Load(object sender, EventArgs e) {
-            totalC.Text = Form1.train.Count.ToString();
+            totalC.Text = Train.train.Count.ToString();
             int i = 1;
             string eater;
-            foreach(Container container in Form1.train)
+            foreach(Wagon container in Train.train)
             {
                 containerBox.Items.Add("Container "+i.ToString()+" ("+container.points.ToString()+" points total)");
                 foreach (Animal animal in container.allAnimals)
                 {
-                    if (animal.MeatEater)
+                    if (animal.Eater == Eater.carnivor)
                     {
                         eater = "Meat eater";
                     }

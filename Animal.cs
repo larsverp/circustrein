@@ -8,15 +8,17 @@ namespace CircusTrein
 {
     public class Animal
     {
-        public Animal(string name, int points, bool meat)
+        public Animal(string name, int points, Eater eater)
         {
             AnimalName = name;
             AnimalPoints = points;
-            MeatEater = meat;
+            Eater = eater;
         }
 
         public string AnimalName { get; }
         public int AnimalPoints { get; }
-        public bool MeatEater { get; }
+        public Eater Eater { get; }
+
+        //Tostring
     }
 }
