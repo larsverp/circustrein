@@ -1,33 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace CircusTrein
 {
-    public partial class result : Form
+    public partial class Result : Form
     {
-        public result()
+        private List<Wagon> wagons = new List<Wagon>();
+        public Result(List<Wagon> wagons)
         {
             InitializeComponent();
+            this.wagons = wagons;
         }
 
         private void result_Load(object sender, EventArgs e) {
-            totalC.Text = Train.train.Count.ToString();
+            totalC.Text = wagons.Count.ToString();
             int i = 1;
             string eater;
-            foreach(Wagon container in Train.train)
+            foreach(Wagon container in wagons)
             {
-                containerBox.Items.Add("Container "+i.ToString()+" ("+container.points.ToString()+" points total)");
-                foreach (Animal animal in container.allAnimals)
+                containerBox.Items.Add("Container "+i.ToString()+" ("+container.Points.ToString()+" points total)");
+                foreach (Animal animal in container.AllAnimals)
                 {
                     if (animal.Eater == Eater.carnivor)
-                    {
                         eater = "Meat eater";
-                    }
                     else
-                    {
                         eater = "Plant eater";
-                    }
-                    containerBox.Items.Add("Name: " + animal.AnimalName + " | Type: " + eater + " | Points: " + animal.AnimalPoints.ToString());
+
+                    containerBox.Items.Add(animal.ToString());
                 }
                 containerBox.Items.Add("");
                 i++;

@@ -1,50 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CircusTrein
 {
-    class Train
+    public class Train
     {
-        public static List<Wagon> train = new List<Wagon>();
+        public List<Wagon> wagons { get; } = new List<Wagon>();
         public Train(List<Animal> animals)
         {
             for (int i = 0; i < animals.Count; i++)
             {
                 if (animals[i].Eater == Eater.carnivor)
                 {
-                    train.Add(new Wagon());
-                    train[train.Count - 1].AddAnimal(animals[i]);
+                    wagons.Add(new Wagon());
+                    wagons[wagons.Count - 1].AddAnimal(animals[i]);
                     animals.Remove(animals[i]);
                 }
             }
 
             while (animals.Count > 0)
             {
-
-                for (int j = 0; j < train.Count; j++)
+                for (int j = 0; j < wagons.Count; j++)
                 {
-                    for (int x = 0; x < animals.Count; x++)
+                    var count = animals.Count;
+                    for (int x = 0; x < count; x++)
                     {
-                        if (train[j].AddAnimal(animals[x]))
-                        {
-                            animals.Remove(animals[x]);
-                        }
+                        if (wagons[j].AddAnimal(animals[0]))
+                            animals.Remove(animals[0]);
                     }
                 }
                 if (animals.Count > 0)
-                {
-                    train.Add(new Wagon());
-                }
+                    wagons.Add(new Wagon());
             }
-            if (train[train.Count - 1].points <= 0)
-            {
-                train.Remove(train[train.Count - 1]);
-            }
-            result form = new result();
-            form.Show();
+            if (wagons[wagons.Count - 1].Points <= 0)
+                wagons.Remove(wagons[wagons.Count - 1]);
         }
     }
 }

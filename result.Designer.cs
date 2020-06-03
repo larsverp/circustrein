@@ -1,6 +1,6 @@
 ﻿namespace CircusTrein
 {
-    partial class result
+    partial class Result
     {
         /// <summary>
         /// Required designer variable.

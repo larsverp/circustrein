@@ -18,10 +18,10 @@ namespace CircusTrein
             InitializeComponent();
         }
 
-        public void newAnimal(Animal animal)
+        public void NewAnimal(Animal animal)
         {
             animals.Add(animal);
-            animalList.Items.Add("Name: "+animal.AnimalName);
+            animalList.Items.Add(animal.ToString());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -30,35 +30,32 @@ namespace CircusTrein
             Eater eater;
             
             if (meat.Checked)
-            {
                 eater = Eater.carnivor;
-            }
             else
-            {
                 eater = Eater.herbivor;
-            }
             int animalPoint;
 
             if(small.Checked == true)
-            {
                 animalPoint = 1;
-            }
             else if(medium.Checked == true)
-            {
                 animalPoint = 3;
-            }
             else
-            {
                 animalPoint = 5;
-            }
 
-            newAnimal(new Animal(animalName, animalPoint, eater));
+            NewAnimal(new Animal() {
+                AnimalName = animalName,
+                AnimalPoints = animalPoint,
+                Eater = eater
+            });
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Train train = new Train(animals);
+            var wagons = train.wagons;
+            Result form = new Result(wagons);
+            form.Show();
         }
     }
 }

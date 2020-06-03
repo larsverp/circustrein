@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CircusTrein
 {
     public class Wagon
     {
         private List<Animal> animals = new List<Animal>();
-        private bool hasMeateater = false;
+        private bool hasMeateater;
+        private bool danger;
         private int sizeLeft = 10;
+        public const int Size = 10;
 
         public bool AddAnimal(Animal animal)
         {
@@ -20,14 +18,11 @@ namespace CircusTrein
                 {
                     if(hasMeateater == false)
                     {
-                        //Place at top
-                        bool danger = false;
+                        danger = false;
                         foreach (Animal checkAnimal in animals)
                         {
                             if (checkAnimal.Eater != Eater.carnivor && checkAnimal.AnimalPoints <= animal.AnimalPoints)
-                            {
                                 danger = true;
-                            }
                         }
 
                         if(danger == false)
@@ -37,25 +32,16 @@ namespace CircusTrein
                             hasMeateater = true;
                             return true;
                         }
-                        else
-                        {
-                            return false;
-                        }
                     }
-                    else
-                    {
-                        return false;
-                    }
+                    return false;
                 }
                 else
                 {
-                    bool danger = false;
+                    danger = false;
                     foreach (Animal checkAnimal in animals)
                     {
-                        if(checkAnimal.Eater == Eater.carnivor && checkAnimal.AnimalPoints >= animal.AnimalPoints)
-                        {
+                        if (checkAnimal.Eater == Eater.carnivor && checkAnimal.AnimalPoints >= animal.AnimalPoints)
                             danger = true;
-                        }
                     }
 
                     if(danger == false)
@@ -64,28 +50,20 @@ namespace CircusTrein
                         sizeLeft = sizeLeft - animal.AnimalPoints;
                         return true;
                     }
-                    else
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
-        public List<Animal> allAnimals
+        public List<Animal> AllAnimals
         {
-            //Return a copy of the list (Read only)
             get{ return animals; }
         }
 
-        public int points
+        public int Points
         {
-            //Make this more flexible
-            get { return 10-sizeLeft; }
+            get { return Size-sizeLeft; }
         }
     }
 }

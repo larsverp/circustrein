@@ -1,24 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CircusTrein
+﻿namespace CircusTrein
 {
     public class Animal
     {
-        public Animal(string name, int points, Eater eater)
+        public string AnimalName { get; set; }
+        public int AnimalPoints { get; set; }
+        public Eater Eater { get; set; }
+
+        public override string ToString()
         {
-            AnimalName = name;
-            AnimalPoints = points;
-            Eater = eater;
+            return "Name: " + AnimalName + " | Type: " + Eater + " | Points: " + AnimalPoints.ToString();
         }
-
-        public string AnimalName { get; }
-        public int AnimalPoints { get; }
-        public Eater Eater { get; }
-
-        //Tostring
     }
 }
