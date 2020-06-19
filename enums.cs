@@ -2,8 +2,8 @@
 {
     public enum Eater
     {
-        carnivor,
-        herbivor
+        Carnivor,
+        Herbivor
 
     }
 }

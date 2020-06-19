@@ -4,7 +4,7 @@ namespace CircusTrein
 {
     public class Wagon
     {
-        private List<Animal> animals = new List<Animal>();
+        public List<Animal> animals { get; private set; } = new List<Animal>();
         private bool hasMeateater;
         private bool danger;
         private int sizeLeft = 10;
@@ -14,14 +14,14 @@ namespace CircusTrein
         {
             if(sizeLeft-animal.AnimalPoints >= 0)
             {
-                if (animal.Eater == Eater.carnivor)
+                if (animal.Eater == Eater.Carnivor)
                 {
                     if(hasMeateater == false)
                     {
                         danger = false;
                         foreach (Animal checkAnimal in animals)
                         {
-                            if (checkAnimal.Eater != Eater.carnivor && checkAnimal.AnimalPoints <= animal.AnimalPoints)
+                            if (checkAnimal.Eater != Eater.Carnivor && checkAnimal.AnimalPoints <= animal.AnimalPoints)
                                 danger = true;
                         }
 
@@ -40,7 +40,7 @@ namespace CircusTrein
                     danger = false;
                     foreach (Animal checkAnimal in animals)
                     {
-                        if (checkAnimal.Eater == Eater.carnivor && checkAnimal.AnimalPoints >= animal.AnimalPoints)
+                        if (checkAnimal.Eater == Eater.Carnivor && checkAnimal.AnimalPoints >= animal.AnimalPoints)
                             danger = true;
                     }
 

@@ -30,9 +30,9 @@ namespace CircusTrein
             Eater eater;
             
             if (meat.Checked)
-                eater = Eater.carnivor;
+                eater = Eater.Carnivor;
             else
-                eater = Eater.herbivor;
+                eater = Eater.Herbivor;
             int animalPoint;
 
             if(small.Checked == true)
@@ -54,8 +54,8 @@ namespace CircusTrein
         {
             Train train = new Train(animals);
             var wagons = train.wagons;
-            Result form = new Result(wagons);
-            form.Show();
+            FrmResult frmResult = new FrmResult(wagons);
+            frmResult.Show();
         }
     }
 }

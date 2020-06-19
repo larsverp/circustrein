@@ -4,10 +4,10 @@ using System.Windows.Forms;
 
 namespace CircusTrein
 {
-    public partial class Result : Form
+    public partial class FrmResult : Form
     {
         private List<Wagon> wagons = new List<Wagon>();
-        public Result(List<Wagon> wagons)
+        public FrmResult(List<Wagon> wagons)
         {
             InitializeComponent();
             this.wagons = wagons;
@@ -22,7 +22,7 @@ namespace CircusTrein
                 containerBox.Items.Add("Container "+i.ToString()+" ("+container.Points.ToString()+" points total)");
                 foreach (Animal animal in container.AllAnimals)
                 {
-                    if (animal.Eater == Eater.carnivor)
+                    if (animal.Eater == Eater.Carnivor)
                         eater = "Meat eater";
                     else
                         eater = "Plant eater";

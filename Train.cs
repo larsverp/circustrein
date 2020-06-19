@@ -9,7 +9,7 @@ namespace CircusTrein
         {
             for (int i = 0; i < animals.Count; i++)
             {
-                if (animals[i].Eater == Eater.carnivor)
+                if (animals[i].Eater == Eater.Carnivor)
                 {
                     wagons.Add(new Wagon());
                     wagons[wagons.Count - 1].AddAnimal(animals[i]);
